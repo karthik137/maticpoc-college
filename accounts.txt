@@ -1,0 +1,33 @@
+Created 4 accounts
+
+for testing to matic network use account1.
+
+all the four accounts has 1 eth each.
+
+
+
+Ropsten
+Account1 : 0x61F7C35660042D3EEfa92Fa34a03E9E4D602A354
+privKey : 9f4816e20d214b8babe27bc134e6998945f9d381c5c3c199974bcd726795d622
+
+
+
+College :
+
+acc: 0xc27C94F9603Df5559570fb7f610564aC7E637A40
+privKey : 42585e081f94680323e7f1bd04d082bdbb304f7e7745199bcd712d7e365c0a55
+
+
+Canteen/Vendor :
+
+acc: 0xdBfc0d214fe261Ed222b6BFdDBF11bd08204A1f4
+privKey : d0287f56fd632e66c9fdffbdbdb46255be8c306bdca42645084f45ffc5c16a72
+
+
+NGO:
+
+Acc: 0x6951D1857B854cDe0ab09fE00B3E95f51CCC5454
+PrivKey : 79bc6b2c99cb99af565bd6498a0d944e455fd91baf46c5d965a29397b83de678
+
+
+

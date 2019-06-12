@@ -31,6 +31,24 @@ contract Ngo{
         uint        amountReceived;
     } 
     
+    //@notice vendor struct
+    struct Vendor {
+        string      vendorName;
+        string      vendorType;
+        address     vendorWalletAddress;
+    }
+    
+    //@notice expense struct
+    struct Expense {
+        uint        expenseId;
+        address     studentWalletAddress;
+        address     vendor;
+        uint        amount;
+        string      message;
+        address     ngoWalletAddress;
+        address     collegeWalletAddress;
+    }
+    
     
     
     //@notice donation data
@@ -45,18 +63,23 @@ contract Ngo{
         address[]                       donors;
     }
     
+    uint donationIdCounter = 10000;
+    
     //mappings
     mapping(address => Donor)       donor;
     mapping(address => College)     college;
     mapping(address => NGO)         ngo;
     mapping(address => Student)     student;
+    mapping(uint => Expense)        expense;
+    mapping(address => Vendor)      vendor;
+    mapping(uint => Donation)       donation;
     
     //events
     event RegisterDonor(address donorWalletAddress, string donorName);
     event RegisterCollege(address collegeWalletAddress, string collegeName);
     event RegisterNGO(address ngoWalletAddress, string ngoName);
     event RegisterStudent(address studentWalletAddress, string studentName);
-    
+    event DonationEvent(uint donationId, address studentWalletAddress, address vendorWalletAddress, uint amount, string message, string eventType);
     
     //@dev function to register donor 
     function registerDonor( address donorWalletAddress, 
@@ -71,6 +94,22 @@ contract Ngo{
             
             //emit event 
             RegisterDonor(donorWalletAddress, donorName);
+    }
+    
+    //@dev function to register vendor
+    function registerVendor(
+            address vendorWalletAddress,
+            string vendorType,
+            string vendorName
+            ) public {
+            
+            //Create vendor 
+            vendor[vendorWalletAddress] = Vendor({
+                vendorName:vendorName,
+                vendorType:vendorType,
+                vendorWalletAddress:vendorWalletAddress
+            });
+                   
     }
     
     
@@ -118,7 +157,9 @@ contract Ngo{
                 string studentName,
                 address collegeWalletAddress,
                 uint age,
-                uint scholorshipAmount
+                uint scholorshipAmount,
+                string donationMessage,
+                address ngoWalletAddress
         ) public {
             
             //create student 
@@ -131,11 +172,23 @@ contract Ngo{
                 amountReceived:0
             });
             
+            
+            //create donation struct 
+            address[] donors;
+            donation[donationIdCounter] = Donation({
+                donationId:donationIdCounter,
+                recipient:studentWalletAddress,
+                message:donationMessage,
+                ngo:ngoWalletAddress,
+                college:collegeWalletAddress,
+                donors:donors
+            });
+            
             //emit event
             RegisterStudent(studentWalletAddress, studentName);
         }
         
-        
+    //@dev function to donate money 
     function donateMoney(
             address studentWalletAddress, 
             address donorWalletAddress,
@@ -182,6 +235,14 @@ contract Ngo{
     function getNGODetails(address ngoWalletAddress) public view returns(string){
         return (
             ngo[ngoWalletAddress].ngoName    
+        );
+    }
+    
+    //@dev function to get vendor details
+    function getVendorDetails(address vendorWalletAddress) public view returns(string, string){
+        return (
+            vendor[vendorWalletAddress].vendorType,
+            vendor[vendorWalletAddress].vendorName
         );
     }
 
