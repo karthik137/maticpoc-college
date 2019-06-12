@@ -1,0 +1,23 @@
+{
+  "name": "mongooperations",
+  "version": "1.0.0",
+  "description": "Mongodb Operations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\"\""
+  },
+  "keywords": [
+    "Nodejs",
+    "Mongodb",
+    "MongodbAPI"
+  ],
+  "author": "Mphasis",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.0.10"
+  }
+}
