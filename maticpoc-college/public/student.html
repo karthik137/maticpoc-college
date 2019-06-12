@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
     <link rel="stylesheet" href="assets/css/Simple-Slider.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 </head>
 
 <body>
@@ -26,7 +27,7 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav ml-auto blackcolor">
       <li class="nav-item">
-        <a class="nav-link " href="#" style="color:white;">Logged in As Sara James</a>
+        <a class="nav-link " href="#" style="color:white;" id="logCustInfo">Logged in As Sara James</a>
       </li>
      
       
@@ -52,12 +53,11 @@
             <div class="container">
                     <!-- Nav pills -->
                     <ul class="nav nav-pills nav-justified" role="tablist" style="color:white;">
+                     
                       <li class="nav-item">
-                        <a class="nav-link active whitecolor" data-toggle="pill" href="#home">Profile</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link whitecolor" data-toggle="pill" href="#Donations">Donations</a>
-                      </li>
+                          <a class="nav-link active whitecolor" data-toggle="pill" href="#home">Donations</a>
+                        </li>
+                     
                      
                       <li class="nav-item">
                         <a class="nav-link whitecolor" data-toggle="pill" href="#Expenditure" >Expenditure</a>
@@ -79,7 +79,7 @@
                     
             <!-- Tab panes -->
             <div class="tab-content">
-                    <div id="home" class="container tab-pane active"><br>
+                    <div id="home2" class="container tab-pane active"><br>
             
                         <br>
                       
@@ -92,13 +92,12 @@
                      
                       
                     </div>
-                    <div id="Donations" class="container tab-pane fade" style="color:black;margin-top:20px;font-size:12px;"><br>
-                    <br>
+                    <div id="home" class="container tab-pane active" style="color:black;margin-top:20px;font-size:12px;"><br>
                       
                       <div >
-                            <h3>All Vendors</h3>
+                          
             
-                          <table class="table-fill table-bordered" id="viewShipmentRequestForRoadDriver" style="color:black;background-color:white;width:95%">
+                          <table class="table-fill table-bordered" id="allDonationsForStudent" style="color:black;background-color:white;width:95%">
                         
                             </table>
                             </div>
@@ -107,7 +106,13 @@
                 
                    
                     <div id="Expenditure" class="container tab-pane fade"><br>
-                      <h3>All Students</h3>
+                      <div >
+                          
+            
+                          <table class="table-fill table-bordered" id="expenditureTbale" style="color:black;background-color:white;width:95%">
+                        
+                            </table>
+                            </div>
                     
                     </div>
 
@@ -148,7 +153,39 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
     <script src="assets/js/Simple-Slider.js"></script>
+    <script src="assets/js/uport-connect.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@3.1.9-1/crypto-js.js"></script>
+          <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js"></script>
+
+
+
+          <script>
+
+                      var studentName=localStorage.getItem("StudentName");
+                      document.getElementById('logCustInfo').innerHTML="Logged In as : "+studentName;
+
+                      
+
+                       $('#allDonationsForStudent').DataTable( {
+                      data: [],
+                      columns: [
+                          { title: "SNo" },
+                          { title: "DonationID" },
+                          { title: "From" },
+                          { title: "To" },
+                          { title: "Amount" },
+                          { title: "Action" }
+                      ]
+                  
+                  } );
+              
+
+            </script>
+
 </body>
 
 </html>

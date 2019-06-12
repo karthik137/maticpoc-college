@@ -37,7 +37,7 @@
       </li>
       <li class="nav-item">
         
-        <a class="nav-link customfont" href="#" style="color:white;">Students |</a>
+        <a class="nav-link customfont" href="#" style="color:white;" id="loginAsStudent">Students |</a>
           
           
         </li>
@@ -134,6 +134,50 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
     <script src="assets/js/Simple-Slider.js"></script>
+    <script src="assets/js/uport-connect.js"></script>
+    
+	<script src="https://cdn.jsdelivr.net/npm/crypto-js@3.1.9-1/crypto-js.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js"></script>
+
+    
+
+    <script>
+
+               
+            const Connect = window.uportconnect
+    
+    
+    
+            // Initialize uport-connect object
+    
+            const uport = new Connect('College',keypairPvt={ did: 'did:ethr:0x6951D1857B854cDe0ab09fE00B3E95f51CCC5454',privateKey:'79bc6b2c99cb99af565bd6498a0d944e455fd91baf46c5d965a29397b83de678'});
+    
+    
+            $('#loginAsStudent').click(function(){
+                uport.requestDisclosure({   // retrive did
+                requested: ['name','email'], 
+                accountType:"keypair",
+                notifications: true
+                });
+    
+                   uport.onResponse('disclosureReq').then(res => {
+               // $('#myModal').modal('show');
+                    const did = res.payload.did
+                    json = JSON.stringify(res.payload);
+    
+                    console.log(res.payload)
+    
+                    var address=res.payload.address;
+                    var name = res.payload.name;
+                    localStorage.setItem("StudentName", res.payload.name);
+
+                    window.location.href = "student.html";
+    
+                   });
+            });
+    
+    
+                </script>
 </body>
 
 </html>
