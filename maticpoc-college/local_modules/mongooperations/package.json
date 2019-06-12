@@ -15,7 +15,7 @@
     "Mongodb",
     "MongodbAPI"
   ],
-  "author": "Mphasis",
+  "author": "Kirito",
   "license": "ISC",
   "dependencies": {
     "mongodb": "^3.0.10"
