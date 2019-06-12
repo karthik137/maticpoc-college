@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CollegePortal</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="assets/css/Article-Cards.css">
+    <link rel="stylesheet" href="assets/css/cards.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg  bg-color-navheader" style="background-color:#000080;color:white;">
+  <a class="navbar-brand" id="titlenav">
+    <img src="" alt="Random College" height="40px;">
+    </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"  aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto blackcolor">
+      <li class="nav-item">
+        <a class="nav-link customfont" href="#" style="color:white;">Login As admin</a>
+      </li>
+     
+     
+     
+        
+    </ul>
+  </div>
+    
+</nav>
+  
+<br>
+<br>
+
+<div class="container">
+  
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6" style="margin-bottom: 30px;margin-top: 10px;">
+  
+          <div class="card bg-light text-dark">
+              <div class="card-body">
+                <h5 style="font-weight:bold;">Login As Admin</h5>
+                <p id="loginCredentials"></p>
+                <br>
+           
+        <form onsubmit="return login()" method="post">
+            <div class="form-group">
+              <label for="userName">UserName:</label>
+              <input type="text" class="form-control" id="userName" name="userName" required>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary btn-block" style="margin-bottom:20px;" id="loginButton">Log In</button>
+          </form> 
+    
+        </div>
+              </div>
+            </div>
+          </div>
+                
+  
+  
+      </div>
+      <div class="col-sm-3"></div>
+      
+    </div> 
+      
+   
+       
+
+    
+
+    <footer id="footer">
+    
+            <div id="footer-container">
+                <p id="footer-content">
+                    Developed by Team Next Matic.</p>
+            </div>
+        </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+    <script src="assets/js/Simple-Slider.js"></script>
+
+
+
+    <script type="text/javascript">
+      
+      
+      var didAddress=localStorage.getItem("custDID");
+
+      var incorrectCredentials=localStorage.getItem("incorrectCredentials");
+      
+      if(incorrectCredentials=="true"){
+        document.getElementById("loginCredentials").style.color='red';
+          document.getElementById("loginCredentials").innerHTML = 'Incorrect Credentials, Please try again'; 
+      }
+
+      // Login as admin
+      function login(){
+        var userName=$('#userName').val();
+        var password=$('#password').val();
+
+        if(userName=="admin" && password=="password"){
+          localStorage.setItem("incorrectCredentials","false");
+          window.location.href="admin.html";
+          return false;
+          
+        }
+        else{
+         
+          localStorage.setItem("incorrectCredentials","true");
+          return false;
+        }
+      }
+
+      
+
+      
+
+
+</script>
+</body>
+
+</html>
